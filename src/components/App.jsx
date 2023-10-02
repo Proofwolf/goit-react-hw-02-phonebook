@@ -53,21 +53,27 @@ export default class App extends Component {
     this.setState({ filter: e.target.value });
   };
 
-  render() {
+  render() 
+  {
     const { contacts, filter } = this.state;
-
+    
     return (
+      
       <div>
         <h1>Phonebook</h1>
         <ContactForm onAddContact={this.handleAddContact} />
         <h2>Contacts</h2>
         <Filter onFilter={this.handleFilter} filter={this.state.filter} />
-        <ContactList
-          contacts={contacts}
-          filter={filter}
-          onDeleteContact={this.handleDeleteContact}
-        />
-      </div>
+        
+        {contacts.length ?<ContactList 
+            contacts= {contacts}
+            filter={filter}
+            onDeleteContact={this.handleDeleteContact}
+    
+        />  : <p>There is no contacts</p>}
+        
+   
+      </div>  
     );
   }
 }
